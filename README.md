@@ -10,14 +10,12 @@ Main calling function of API
 This function returns the dataframe(pandas) based on .csv, .txt, .json files of datasets.
 
 Args:
-	filepath (string)      : Dataset file's relative/absolute path. It must be CSV, TEXT, JSON file, if extension(.csv, .txt, .json)
-						 is not given in the file's basename(test ----> test.json), then filetype argument is required.
-						 If extension and filetype argument is given then it should be match.
-							 TEXT ----> Data is in comma separable format but saved as .txt.
-							 CSV & TEXT file should have first column with column names in comma separable manner.
+	filepath (string)      : Dataset file's relative/absolute path. It must be CSV, TEXT, JSON file, if extension(.csv, .txt, .json) is not given in the file's basename(test ----> test.json), then filetype argument is required. If extension and filetype argument is given then it should be match.
+				 TEXT ----> Data is in comma separable format but saved as .txt.
+				 CSV & TEXT file should have first column with column names in comma separable manner.
 
 	columns (list)         : Provide only required columns dataframe.
-							 This argumnet differs for the file types.
+				 This argumnet differs for the file types.
 
 		.txt or .csv -----> list of column names in string 
 		(By default: None)-----> That creates all the column names list.  
@@ -41,9 +39,9 @@ Args:
 		columns = ['ID', 'Name', ['Marks', 'Maths'], ['Marks', 'language', 'English'], ['Marks', 'language', 'Hindi'], 'Pass']
 
 	datatype (dictionary)  : datatypes for columns/attributes for those we want to apply strict type conversion.
-							 (if possible else will generate error)
-							 Supported datatype: str, int, boolean, float
-							 This arguments differs for the file types.
+				 (if possible else will generate error)
+				 Supported datatype: str, int, boolean, float
+				 This arguments differs for the file types.
 		.txt or .csv ----->  datatype = {'column1': 'int', 'column2': 'str', 'column3': 'float', 'column4': 'boolean'}
 		(By default: None)-----> That doesn't apply any type conversion.
 
