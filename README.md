@@ -3,6 +3,8 @@ A python way for data analysis.
 
 ## Dataframe
 
+Get pandas dataframe by passing .csv, .txt, & .json file. Even you can type cast data by providing the columns/attributes datatype in the following format.
+
 ```
 	Main calling function of API 
 	This function returns the dataframe(pandas) based on .csv, .txt, .json files of datasets.
