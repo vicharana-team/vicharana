@@ -62,8 +62,8 @@ Args:
 		}
 
 	filetype (string)      : Available values -----> 'txt', 'csv', 'json'
-	(By default: None)-----> If you have pass the filepath with one of the supported extensions, then filetype = None is works.
-	If filepath is not having extension then filetype is mandatory.
+		(By default: None)-----> If you have pass the filepath with one of the supported extensions, then filetype = None is works.
+		If filepath is not having extension then filetype is mandatory.
 
 Returns:
 		Dataframe (Pandas dataframe object): It is dataframe of pandas.
