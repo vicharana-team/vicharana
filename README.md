@@ -6,6 +6,25 @@ A python way for data analysis.
 Get pandas dataframe by passing .csv, .txt, & .json file. Even you can type cast data by providing the columns/attributes datatype in the following format.
 
 ```
+#Common way: without typcasting
+filepath = './test.csv'
+dataframe = get_dataframe(filepath)
+```
+
+```
+#With selective column only
+columns = ['ID', 'name']
+dataframe = get_dataframe(filepath, columns)
+```
+
+```
+#With typecast
+columns = ['ID', 'name', 'pass']
+datatype = {'ID': 'int', 'name': 'str'}
+dataframe = get_dataframe(filepath, columns= columns, datatype = datatype)
+```
+
+```
 Main calling function of API 
 This function returns the dataframe(pandas) based on .csv, .txt, .json files of datasets.
 
