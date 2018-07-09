@@ -4,7 +4,7 @@ import codecs
 import json
 import pandas as pd
 
-def nested_data(attributes, dict_line):
+def nested_data(attributes: list, dict_line: dict) -> str:
 	"""
 	It trace out the nested structure values of elements of the json format.
 
@@ -22,7 +22,7 @@ def nested_data(attributes, dict_line):
 	return dict_line
 
 
-def json_to_dataframe(filepath, attributes, given_columns, datatype):
+def json_to_dataframe(filepath: str, attributes: list, given_columns: list, datatype: dict):
 	"""
 	This function convert json files to dataframe accroding to given_columns and datatype by type casting.
 
@@ -118,7 +118,7 @@ def json_to_dataframe(filepath, attributes, given_columns, datatype):
 	reading_file_pointer.close()
 	return dataframe
 
-def parse_dict_line(dict_line):
+def parse_dict_line(dict_line: dict) -> list:
 	"""
 	It is recursive function to list out all the attributes.
 
@@ -142,7 +142,7 @@ def parse_dict_line(dict_line):
 			attributes.append(k)
 	return attributes
 
-def get_json_attributes(filepath):
+def get_json_attributes(filepath: str):
 	"""
 	Returns the attributes/elements of json format of dataset from the file.
 
@@ -162,7 +162,7 @@ def get_json_attributes(filepath):
 	reading_file_pointer.close()
 	return attributes
 
-def get_columns(filepath):
+def get_columns(filepath: str) -> list:
 	"""
 	Returns column names list from csv/txt file.
 
@@ -182,7 +182,7 @@ def get_columns(filepath):
 	reading_file_pointer.close()
 	return str_columns
 
-def str_to_bool(string):
+def str_to_bool(string: str) -> bool:
 	"""
 	It convert string true/false to boolean datatype.
 
@@ -201,7 +201,7 @@ def str_to_bool(string):
 	else:
 		 sys.exit(str(string) + ' can\'t be converted to boolean')
 
-def csv_to_dataframe(filepath, all_columns, given_columns, datatype):
+def csv_to_dataframe(filepath: str, all_columns: list, given_columns: list, datatype: dict):
 	"""
 	This function convert csv and txt files to dataframe accroding to given_columns and datatype by type casting.
 
@@ -304,7 +304,7 @@ def csv_to_dataframe(filepath, all_columns, given_columns, datatype):
 	reading_file_pointer.close()
 	return dataframe
 
-def read_file(filepath, filetype, given_columns, datatype):
+def read_file(filepath: str, filetype: str, given_columns: list, datatype: dict):
 	"""
 	This function returns the dataframe(pandas) of given_columns based on .csv, .txt, .json files of datasets by typecasting datatype.
 
@@ -325,7 +325,7 @@ def read_file(filepath, filetype, given_columns, datatype):
 		dataframe = json_to_dataframe(filepath, attributes, given_columns, datatype)
 	return dataframe
 
-def get_filetype(filepath):
+def get_filetype(filepath: str):
 	"""
 	It returns the filetype from the relative/absolute file address.
 
@@ -346,7 +346,7 @@ def get_filetype(filepath):
 	else:
 		return split_names[-1] 
 
-def get_dataframe(filepath, columns = None, datatype = None, filetype = None):
+def get_dataframe(filepath: str, columns = None, datatype = None, filetype = None):
 	"""
 	Main calling function of API 
 	This function returns the dataframe(pandas) based on .csv, .txt, .json files of datasets.
