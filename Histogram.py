@@ -158,29 +158,80 @@ def get_histogram(df, columns = None, plot=True, bins=None, range=None, histtype
 
 		2). columns [list]: list of column name going to have histogram (In string type & same name as in dataframe/dataset).
 							Only INT & FLOAT type column is allowed.
+							Default: None [All INT & FLOAT columns histogram will be computed]
 		
 		3). plot [dict/bool]: Plot_histogram flag 
+							  Default: True [All INT & FLOAT columns histogram will be drawed]
+							  Columnwide different value can also be assigned for different columns through dictionary.
+							  ex: plot={'Maths': True, 'Total': False}
+							  Same value for all columns can also be assigned just by passing value instead using dictionary.
+							  ex: plot=False
 		
-		4). bins [dict/int/list]: Equal or unequal bin size 
+		4). bins [dict/int/list]: Equal or unequal bin size/boundaries
+								  Default: None [Number of bin will be 10 within column range]
+								  INT value means number of bins within range.
+								  LIST value means bins partion's boundaries (bins + 1) 
+								  Columnwide different value can also be assigned for different columns through dictionary.
+								  ex: bins={'Maths': 10, 'Total': [0,1,1.5,3,4]}
+								  Same value for all columns can also be assigned just by passing value instead using dictionary.
+								  ex: bins=20 or bins=[10,20,30]						  
 		
-		5). range [dict/tuple]: Range of value in INT & FLOAT
+		5). range [dict/tuple]: Range of value in INT & FLOAT columns
+								Default: None [(min(x), max(x)) will be your range]
+								Columnwide different value can also be assigned for different columns through dictionary.
+							  	ex: range={'Maths': (10,50), 'Total': (0,500)}
+								Same value for all columns can also be assigned just by passing value instead using dictionary.
+							  	ex: range=(20,50)						
 		
 		6). histtype [dict/str]: Type of Histogram to draw. ['bar', 'barstacked', 'step', 'stepfilled']
+								 Default: 'bar'
+								 Columnwide different value can also be assigned for different columns through dictionary.
+							  	 ex: histtype={'Maths': 'bar', 'Total': 'step'}
+								 Same value for all columns can also be assigned just by passing value instead using dictionary.
+							  	 ex: histtype='step'						 
 		
 		7). align [dict/str]: Controls how the histogram is plotted. [‘left’, ‘mid’, ‘right’]
-		
+							  Default: 'mid'
+							  Columnwide different value can also be assigned for different columns through dictionary.
+						  	  ex: align={'Maths': 'mid', 'Total': 'right'}
+							  Same value for all columns can also be assigned just by passing value instead using dictionary.
+						  	  ex: align='left'
+
 		8). orientation [dict/str]: If ‘horizontal’, barh will be used for bar-type histograms. [‘horizontal’, ‘vertical’]
-		
+									Default: 'vertical'
+								  	Columnwide different value can also be assigned for different columns through dictionary.
+							  	  	ex: align={'Maths': 'vertical', 'Total': 'horizontal'}
+								  	Same value for all columns can also be assigned just by passing value instead using dictionary.
+							  	  	ex: align='vertical'
+
 		9). rwidth [dict/float]: The relative width of the bars as a fraction of the bin width. 
+								 Default: None
+							  	 Columnwide different value can also be assigned for different columns through dictionary.
+						  	  	 ex: align={'Maths': 2.5, 'Total': 5.2}
+							  	 Same value for all columns can also be assigned just by passing value instead using dictionary.
+						  	  	 ex: align=2.1
 		
 		10). log [dict/bool]: If True, the histogram axis will be set to a log scale.
-		
+							  Default: False
+							  Columnwide different value can also be assigned for different columns through dictionary.
+							  ex: align={'Maths': False, 'Total': True}
+							  Same value for all columns can also be assigned just by passing value instead using dictionary.
+							  ex: align=True
+
+
 		11). color [dict/str]: Color specification. ['red', 'green', ...]
-		
+							   Default: None
+							   Columnwide different value can also be assigned for different columns through dictionary.
+						  	   ex: align={'Maths': 'red', 'Total': 'green'}
+							   Same value for all columns can also be assigned just by passing value instead using dictionary.
+						  	   ex: align='red'
+
 	Returns:
-		1). hist_return [dict]: n ==> The values of the histogram bins.
-								bins ==> The edges of the bins.
-								patches ==> Silent list of individual patches used to create the histogram.
+		1). hist_return [dict]: Columnwide different value will be returned for different columns through dictionary.
+								Each column contains following three:
+									n ==> The values of the histogram bins.
+									bins ==> The edges of the bins.
+									patches ==> Silent list of individual patches used to create the histogram.
 
 	"""
 	all_column_names = df.columns
